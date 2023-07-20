@@ -1,0 +1,41 @@
+<%= form_for([:admin, @property]) do |form| %>
+  <div>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name %>
+  </div>
+  
+   <div>
+    <%= form.label :Amenities %><br>
+    <%= form.text_area :amenities %>
+  </div>
+  
+   <div>
+    <%= form.label :Size %><br>
+    <%= form.text_field :size %>
+  </div>
+  
+   <div>
+    <%= form.label :Price %><br>
+    <%= form.text_field :price %>
+  </div>
+  
+  
+  <div>
+    <%= form.label :Description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :Location %><br>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :imgage %><br>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

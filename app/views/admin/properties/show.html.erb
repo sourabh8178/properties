@@ -1,0 +1,44 @@
+<h2>show property</h2>
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @property.name %>
+  </p>
+
+  <p>
+    <strong>amenities:</strong>
+    <%= @property.amenities %>
+  </p>
+
+  <p>
+    <strong>size:</strong>
+    <%= @property.size %>
+  </p>
+
+  <p>
+    <strong>price:</strong>
+    <%= @property.price %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @property.description %>
+  </p>
+
+  <p>
+    <strong>location:</strong>
+    <%= @property.location %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <% if @property.images.any? %>
+    	<% @property.images.each do |img| %>
+		    <%= image_tag img, style: "width: 200px; height: 94px; " %>
+    	<% end %>
+    <% end %>
+  </p>
+
+</div>
+
+<%= link_to "back", admin_properties_path %>

@@ -1,0 +1,12 @@
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @profile.name %>
+  </p>
+
+  <p>
+    <strong>email:</strong>
+    <%= @profile.email %>
+  </p>
+</div>
+<%= link_to "Edit this profile", edit_profile_path(@profile) %>
