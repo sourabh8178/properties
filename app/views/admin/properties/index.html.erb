@@ -18,9 +18,9 @@
 			<td><%= prop.description%></td>
 			<td><%= prop.location%></td>
 			<td><%= link_to "show", admin_property_path(prop), class: "btn btn-outline-primary" %></td>
-			<td><%= link_to "Edit", edit_admin_property_path(prop) %></td>
+			<td><%= link_to "Edit", edit_admin_property_path(prop), class: "btn btn-outline-success" %></td>
 			<td><%= link_to "Destroy", admin_property_path(prop), data: {turbo_method: :delete,
-        turbo_confirm: "Are you sure?"} %></td>
+        turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger" %></td>
 		</tr>
 		<% end %>
 	</tbody>
