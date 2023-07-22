@@ -32,8 +32,11 @@ class Admin::PropertiesController < ApplicationController
   end
 
 	def destroy
-    @property.destroy
-    redirect_to admin_properties_path, status: :see_other
+    @property.delete
+    respond_to do |format|
+      format.html { redirect_to admin_properties_url, notice: "Post was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
 	private

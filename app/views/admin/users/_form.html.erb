@@ -1,0 +1,21 @@
+<%= form_for([:admin, @user]) do |form| %>
+	 <%= form.hidden_field :role, value: "agent" %>
+  <div>
+    <%= form.label :Email %><br>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :Company %><br>
+    <%= form.select :company_id, Company.all.map{ |c| [c.title, c.id ]}, {:prompt => '-- Please Select Company --'} %>
+  </div>
+  
+   <div>
+    <%= form.label :password %><br>
+    <%= form.text_field :password %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

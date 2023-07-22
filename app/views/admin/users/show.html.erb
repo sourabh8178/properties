@@ -1,0 +1,16 @@
+<h2>show property</h2>
+<div>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong>company:</strong>
+    <%= @user&.company&.title %>
+  </p>
+
+</div>
+
+<%= link_to "back", admin_users_path %>

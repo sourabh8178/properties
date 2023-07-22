@@ -18,8 +18,13 @@
     <%= form.label :Price %><br>
     <%= form.text_field :price %>
   </div>
-  
-  
+
+
+   <div>
+    <%= form.label :User %><br>
+    <%= form.select :user_id, User.all.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Company --'} %>
+  </div>  
+
   <div>
     <%= form.label :Description %><br>
     <%= form.text_area :description %>
