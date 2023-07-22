@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-  has_one :profiles, dependent: :destroy
+  has_one :profile, dependent: :destroy
   belongs_to :property, optional: true
   belongs_to :company, optional: true
+  scope :agents, -> { where role: "agent" }
+  scope :customers, -> { where role: "customer" }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

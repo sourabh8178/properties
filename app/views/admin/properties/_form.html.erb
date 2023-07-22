@@ -21,8 +21,8 @@
 
 
    <div>
-    <%= form.label :User %><br>
-    <%= form.select :user_id, User.all.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Company --'} %>
+    <%= form.label :agent %><br>
+    <%= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'} %>
   </div>  
 
   <div>

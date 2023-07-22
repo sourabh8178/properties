@@ -16,8 +16,9 @@ class ProfilesController < ApplicationController
 	def create
 		@profile = Profile.new(profile_params)
 		@profile.user_id = current_user.id
-		@profile.is_complete = true
     if @profile.save    	
+			@profile.is_complete = true
+			@profile.save
       redirect_to @profile
     else
       render :new, status: :unprocessable_entity
