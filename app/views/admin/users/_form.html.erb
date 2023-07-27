@@ -1,21 +1,49 @@
-<%= form_for([:admin, @user]) do |form| %>
-	 <%= form.hidden_field :role, value: "agent" %>
+<!-- <%#= form_for([:admin, @user]) do |form| %>
+	 <%#= form.hidden_field :role, value: "agent" %>
   <div>
-    <%= form.label :Email %><br>
-    <%= form.text_field :email %>
+    <%#= form.label :Email %><br>
+    <%#= form.text_field :email %>
   </div>
 
   <div>
-    <%= form.label :Company %><br>
-    <%= form.select :company_id, Company.all.map{ |c| [c.title, c.id ]}, {:prompt => '-- Please Select Company --'} %>
+    <%#= form.label :Company %><br>
+    <%#= form.select :company_id, Company.all.map{ |c| [c.title, c.id ]}, {:prompt => '-- Please Select Company --'} %>
   </div>
   
    <div>
-    <%= form.label :password %><br>
-    <%= form.text_field :password %>
+    <%#= form.label :password %><br>
+    <%#= form.text_field :password %>
   </div><br>
 
   <div>
-    <%= form.submit %>
+    <%#= form.submit %>
   </div>
-<% end %>
+<%# end %>
+ -->
+ <div class="row">
+  <div class="col-md-12">
+    <div class="card card-plain">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title mt-0">New User</h4>
+      </div>
+      <div class="card-body">
+        <%= form_for([:admin, @user]) do |form| %>
+          <%= form.hidden_field :role, value: "agent" %>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Enter The type Email</label>
+           <%= form.text_field :email, type: "email", class: "form-control",id: "exampleInput1" %>
+          </div>          
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Enter The Select Company</label>
+           <%= form.select :company_id, Company.all.map{ |c| [c.title, c.id ]}, {:prompt => '-- Please Select Company --'}, class: "form-control" %>     
+          </div>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Enter the type Password</label>
+           <%= form.text_field :password ,class: "form-control", id: "exampleInput1"%>
+         </div>
+         <%= form.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

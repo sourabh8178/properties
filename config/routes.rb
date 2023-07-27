@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  root "profiles#index"
+  get "profiles", to: "profiles#index"
   resources :profiles
+  get "properties/:id", to: "properties#show", as: "property"
+  root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,8 +12,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
     resources :companies
-    # resources :users
+    resources :users
     resources :properties
     resources :users
+    # get "properties", to: "properties#index"    
   end
 end

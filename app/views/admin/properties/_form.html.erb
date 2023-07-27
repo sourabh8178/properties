@@ -1,46 +1,133 @@
-<%= form_for([:admin, @property]) do |form| %>
+<!-- <%#= form_for([:admin, @property]) do |form| %>
   <div>
-    <%= form.label :Name %><br>
-    <%= form.text_field :name %>
+    <%#= form.label :Name %><br>
+    <%#= form.text_field :name %>
   </div>
   
    <div>
-    <%= form.label :Amenities %><br>
-    <%= form.text_area :amenities %>
+    <%#= form.label :Amenities %><br>
+    <%#= form.text_area :amenities %>
   </div>
   
    <div>
-    <%= form.label :Size %><br>
-    <%= form.text_field :size %>
+    <%#= form.label :Size %><br>
+    <%#= form.text_field :size %>
   </div>
   
    <div>
-    <%= form.label :Price %><br>
-    <%= form.text_field :price %>
+    <%#= form.label :Price %><br>
+    <%#= form.text_field :price %>
   </div>
 
 
    <div>
-    <%= form.label :agent %><br>
-    <%= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'} %>
-  </div>  
-
-  <div>
-    <%= form.label :Description %><br>
-    <%= form.text_area :description %>
+    <%#= form.label :agent %><br>
+    <%#= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'} %>
   </div>
 
   <div>
-    <%= form.label :Location %><br>
-    <%= form.text_field :location %>
+    <%#= form.label :Description %><br>
+    <%#= form.text_area :description %>
   </div>
 
   <div>
-    <%= form.label :imgage %><br>
-    <%= form.file_field :images, multiple: true %>
+    <%#= form.label :Location %><br>
+    <%#= form.text_field :location %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%#= form.label :imgage %><br>
+    <%#= form.file_field :images, multiple: true %>
   </div>
-<% end %>
+
+  <div>
+    <%#= form.submit %>
+  </div>
+<%# end %>
+ -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-plain">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title mt-0">Property</h4>
+      </div>
+      <div class="card-body">
+        <%= form_for([:admin, @property]) do |form| %>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> Name</label>
+           <%= form.text_field :name, class: "form-control",id: "exampleInput1"%>
+
+          </div>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> amenities</label>
+           <%= form.text_field :amenities, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> size</label>
+           <%= form.text_field :size, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Price</label>
+           <%= form.text_field :price, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Bedrooms</label>
+           <%= form.number_field :bedrooms, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Bathrooms</label>
+           <%= form.number_field :bathrooms, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Parking</label>
+           <%= form.number_field :parking, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Agent</label>   
+           <%= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Status type</label>   
+           <%= form.select :status_type, Property.status_types.map{ |st| [st[0], st[1].to_i]}, {:prompt => '-- Please Select Agent --'}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> Description</label>
+           <%= form.text_field :description, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Property type </label>
+           <%= form.select :property_type, [['Cafe','cafe'],['Apartment','apartment'],['House','house'],['Restaurant','restaurant'],['Store','Store'],['Villa','villa']],{:prompt => '-- Please Select property type --'}, class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> Location</label>
+           <%= form.text_field :location, class: "form-control",id: "exampleInput1" %>
+          </div>      
+          <div>
+            <%= form.label :imgage %><br>
+            <% if form.object.new_record? %>
+              <%= form.file_field :images, multiple: true %>
+            <% else %>
+              <%= form.file_field :images, multiple: true %>
+            <% end %>
+          </div>
+          
+         <%= form.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

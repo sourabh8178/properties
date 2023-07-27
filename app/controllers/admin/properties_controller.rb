@@ -1,7 +1,7 @@
 class Admin::PropertiesController < ApplicationController
 	before_action :set_property, only: %i[ show edit update destroy ]
 	def index
-		@property = Property.all
+		@properties = Property.all
 	end
 
 	def new
@@ -16,7 +16,9 @@ class Admin::PropertiesController < ApplicationController
 
 	def create
 		@property = Property.new(property_params)
+		@property.status_type = params[:property][:status_type].to_i
     if @property.save
+    	 @property.update(images: params[:property][:images].compact_blank)
       redirect_to admin_property_path(@property)
     else
       render :new, status: :unprocessable_entity
@@ -24,7 +26,14 @@ class Admin::PropertiesController < ApplicationController
 	end
 
 	def update
-    if @property.update(property_params)
+		status_type = params[:property][:status_type].to_i
+		debugger
+		# update = property_params.merge()
+    if @property.update(property_params.merge(status_type: status_type))
+    	if params[:property][:images].compact_blank.present?
+    		@property.update(images: params[:property][:images])
+    		# @property.images.attached(params[:property][:images])
+    	end
       redirect_to  admin_property_path(@property)
     else
       render :edit, status: :unprocessable_entity
@@ -41,10 +50,10 @@ class Admin::PropertiesController < ApplicationController
 
 	private
 	 def set_property
-	 	@property = Property.find(params[:id])
+	 	@property = Property.friendly.find(params[:id])
 	 end
 
-	 def property_params
-	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, images: [])
+	 def property_params		
+	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking)
 	 end
 end
