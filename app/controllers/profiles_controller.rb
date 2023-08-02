@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
 	before_action :set_profile, only: %i[ show edit update destroy ]
+
 	def index		
 	end
 
@@ -8,6 +9,10 @@ class ProfilesController < ApplicationController
 	end
 
 	def show
+		id = @profile.user_id
+		@user = User.find(id) 
+		@properties = @user.properties
+		@company = @user.company
 	end
 
 	def edit
@@ -16,10 +21,11 @@ class ProfilesController < ApplicationController
 	def create
 		@profile = Profile.new(profile_params)
 		@profile.user_id = current_user.id
+		@profile.email = current_user.email
+		@profile.is_complete = true
+		@profile.profile_image = params[:profile][:profile_image]
     if @profile.save    	
-			@profile.is_complete = true
-			@profile.save
-      redirect_to @profile
+      redirect_to(request.referer)
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,6 +45,6 @@ class ProfilesController < ApplicationController
   	@profile = Profile.find(params[:id])
   end
   def profile_params
-  	params.require(:profile).permit(:name, :email, :user_id)
+  	params.require(:profile).permit(:name, :email, :user_id, :mobile_number, :address, :profile_image)
   end
 end

@@ -1,10 +1,21 @@
 <h1>Editing property</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-plain">
+      <div class="page-banner-section section" style="background-image: url(https://htmldemo.net/khonike/khonike/assets/images/bg/single-property-bg.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Edit Property</h1>
+                </div>
+            </div>
+        </div>
+      </div>
+      <%= render "form", property: @property %>
+      <%= link_to "Show this property", @property, class: "btn" %> <br>
+      <%= link_to "Back", properties_path, class: "btn" %>
+        <br>
 
-<%= render "form", property: @property %>
-
-<br>
-
-<div>
-  <%= link_to "Show this property", @property %> |
-  <%= link_to "Back to properties", properties_path %>
+    </div>
+  </div>
 </div>

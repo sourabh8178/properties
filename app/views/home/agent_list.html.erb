@@ -1,0 +1,46 @@
+<div class="page-banner-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="page-banner-title">Agent</h1>
+                <ul class="page-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Agent Carousel 3 Column</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="agent-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+
+    <div class="row">
+        <div class="agent-carousel-2 section slider-space-30">
+
+            <!--Agent satrt-->
+            <% @agents.each do |agent| %>
+            <div class="col">
+                <div class="agent">
+                    <div class="image">
+                        <a class="img" href="/agent/<%= agent.id%>"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""></a>
+                        <div class="social">
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title"><a href="agent-details.html"><%= agent.profile.name.capitalize %></a></h4>
+                        <a href="#" class="phone"><%= agent.profile.mobile_number %></a>
+                        <a href="#" class="email"><%= agent.profile.email %></a>
+                        <span class="properties"><%= agent.properties.count %> Properties</span>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <!--Agent end-->
+        </div>
+    </div>
+  </div>
+</div>

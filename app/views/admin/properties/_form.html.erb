@@ -1,51 +1,3 @@
-<!-- <%#= form_for([:admin, @property]) do |form| %>
-  <div>
-    <%#= form.label :Name %><br>
-    <%#= form.text_field :name %>
-  </div>
-  
-   <div>
-    <%#= form.label :Amenities %><br>
-    <%#= form.text_area :amenities %>
-  </div>
-  
-   <div>
-    <%#= form.label :Size %><br>
-    <%#= form.text_field :size %>
-  </div>
-  
-   <div>
-    <%#= form.label :Price %><br>
-    <%#= form.text_field :price %>
-  </div>
-
-
-   <div>
-    <%#= form.label :agent %><br>
-    <%#= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'} %>
-  </div>
-
-  <div>
-    <%#= form.label :Description %><br>
-    <%#= form.text_area :description %>
-  </div>
-
-  <div>
-    <%#= form.label :Location %><br>
-    <%#= form.text_field :location %>
-  </div>
-
-  <div>
-    <%#= form.label :imgage %><br>
-    <%#= form.file_field :images, multiple: true %>
-  </div>
-
-  <div>
-    <%#= form.submit %>
-  </div>
-<%# end %>
- -->
-
 <div class="row">
   <div class="col-md-12">
     <div class="card card-plain">
@@ -77,30 +29,30 @@
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Bedrooms</label>
-           <%= form.number_field :bedrooms, class: "form-control",id: "exampleInput1" %>
+           <%= form.select :bedrooms, [['1','1'],['2','2'],['3','3']],{:prompt => '--  Select Bedroom Numbers --'} , class: "form-control",id: "exampleInput1" %>
           </div>
 
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Bathrooms</label>
-           <%= form.number_field :bathrooms, class: "form-control",id: "exampleInput1" %>
+           <%= form.select :bathrooms, [['1','1'],['2','2'],['3','3']],{:prompt => '-- Select Bathroom Numbers --'}, class: "form-control",id: "exampleInput1" %>
           </div>
 
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Parking</label>
-           <%= form.number_field :parking, class: "form-control",id: "exampleInput1" %>
+           <%= form.select :parking, [['1','1'],['2','2'],['3','3']],{:prompt => '--  Select Parking Numbers --'}, class: "form-control",id: "exampleInput1" %>
           </div>
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Agent</label>   
-           <%= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '-- Please Select Agent --'}, class: "form-control" %>
+           <%= form.select :user_id, User.agents.map{ |u| [u.email, u.id ]}, {:prompt => '--  Select Agent --'}, class: "form-control" %>
           </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Status type</label>   
-           <%= form.select :status_type, Property.status_types.map{ |st| [st[0], st[1].to_i]}, {:prompt => '-- Please Select Agent --'}, class: "form-control" %>
-          </div>
+           <%#= form.select :status_type, Property.status_types.map{ |st| [st[0], st[1]]}, {:prompt => '--  Select Agent --'}, class: "form-control" %>
+          </div> -->
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Description</label>
@@ -109,13 +61,14 @@
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Property type </label>
-           <%= form.select :property_type, [['Cafe','cafe'],['Apartment','apartment'],['House','house'],['Restaurant','restaurant'],['Store','Store'],['Villa','villa']],{:prompt => '-- Please Select property type --'}, class: "form-control" %>
+           <%= form.select :property_type, [['RESIDENTIAL PLOTS','RESIDENTIAL PLOTS'],['RESIDENTIAL BUILDINGS','RESIDENTIAL BUILDINGS'],['COMMERCIAL','COMMERCIAL']],{:prompt => '--  Select Property type --'}, class: "form-control" %>
           </div>
           
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Location</label>
-           <%= form.text_field :location, class: "form-control",id: "exampleInput1" %>
-          </div>      
+           <%= form.select :location, [["Bairagarh", "Bairagarh"], ["Berasia Road", "Berasia Road"], ["Bittan Market", "Bittan Market"], ["Habib Gan", "Habib Gan"], ["Hamidia Road", "Hamidia Road"], ["Hari Ganga Nagar", "Hari Ganga Nagar"], ["Bangrasia", "Bangrasia"], ["Katara", "Katara"], ["Badwai", "Badwai"]],{:prompt => '--  Select Location --'}, class: "form-control", id: "exampleInput1" %>
+          </div>
+
           <div>
             <%= form.label :imgage %><br>
             <% if form.object.new_record? %>
@@ -131,3 +84,17 @@
     </div>
   </div>
 </div>
+
+<div id="error-message" style="color: red; display: none;">Please select an option.</div>
+
+<script type="text/javascript">
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+  var selectElement = document.getElementById("my_select");
+  if (!selectElement.value) {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById("error-message").style.display = "block"; // Show error message
+  } else {
+    document.getElementById("error-message").style.display = "none"; // Hide error message
+  }
+});
+</script>

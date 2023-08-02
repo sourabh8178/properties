@@ -14,3 +14,44 @@
   </div>
   
 <% end %>
+
+<div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">PROFILE DETAILS</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-12 ms-auto me-auto">    
+        <ul class="login-register-tab-list nav">
+            <li><a class="active" href="#login-tab" data-bs-toggle="tab">Profile</a></li>
+        </ul>
+        <%= form_with model: @profile do |form| %>
+         <div>
+            <%= form.label :name %><br>
+            <%= form.text_field :name %>    
+          </div>
+
+          <div>
+            <%= form.label :mobile_number %><br>
+            <%= form.text_field :mobile_number %>    
+          </div>
+          <div>
+            <%= form.label :address %><br>
+            <%= form.text_field :address %>    
+          </div><br>
+
+          <div>
+           <%= form.submit class: "btn" %>
+          </div>
+          
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

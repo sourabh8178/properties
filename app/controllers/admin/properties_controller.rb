@@ -27,7 +27,6 @@ class Admin::PropertiesController < ApplicationController
 
 	def update
 		status_type = params[:property][:status_type].to_i
-		debugger
 		# update = property_params.merge()
     if @property.update(property_params.merge(status_type: status_type))
     	if params[:property][:images].compact_blank.present?
@@ -54,6 +53,6 @@ class Admin::PropertiesController < ApplicationController
 	 end
 
 	 def property_params		
-	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking)
+	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking, :images)
 	 end
 end

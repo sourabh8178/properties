@@ -1,12 +1,12 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
+  before_action :check_profile
+  skip_before_action :verify_authenticity_token
+
 
   # GET /properties or /properties.json
   def index
-
-def index    
-  end
-    @properties = Property.all
+    @properties = current_user.properties
   end
 
   # GET /properties/1 or /properties/1.json
@@ -24,8 +24,8 @@ def index
 
   # POST /properties or /properties.json
   def create
-    @property = Property.new(property_params)
-
+    @property = current_user.properties.new(property_params)
+    @property.images = params[:property][:images]
     respond_to do |format|
       if @property.save
         format.html { redirect_to property_url(@property), notice: "Property was successfully created." }
@@ -60,6 +60,12 @@ def index
     end
   end
 
+  def feedback
+    property = Property.friendly.find(params[:id])
+    property.feedbacks.create(name: params[:feedback][:name], email: params[:feedback][:email], message: params[:feedback][:message])
+    redirect_to home_property_path(property)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_property
@@ -67,7 +73,7 @@ def index
     end
 
     # Only allow a list of trusted parameters through.
-    def property_params
-      params.fetch(:property, {})
-    end
+    def property_params   
+    params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking, :images)
+   end
 end

@@ -1,0 +1,71 @@
+<div class="page-banner-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="page-banner-title">Create Post</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-12 ms-auto me-auto">    
+        <ul class="login-register-tab-list nav">
+            <li><a class="active" href="#login-tab" data-bs-toggle="tab">Post</a></li>
+        </ul>
+  <div class="card-body">
+    <%= form_for(@post) do |form| %>
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating"> Name</label>
+       <%= form.text_field :name, class: "form-control",id: "exampleInput1"%>
+      </div>
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating">Price</label>
+       <%= form.text_field :price, class: "form-control",id: "exampleInput1" %>
+      </div>
+
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating">Transaction Type</label>
+       <%= form.select :transaction_type, [['independent house','independent house'],['plot','plot'],['furnished','furnished']],{:prompt => '--  Select Bedroom Numbers --'} , class: "form-control",id: "exampleInput1" %>
+      </div>
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating"> Description</label>
+       <%= form.text_area :details, class: "form-control",id: "exampleInput1" %>
+      </div>
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating"> email</label>
+       <%= form.email_field :email, class: "form-control",id: "exampleInput1" %>
+      </div>
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating"> Phone Number</label>
+       <%= form.text_field :phone_number, class: "form-control",id: "exampleInput1" %>
+      </div>
+
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating">Property type </label>
+       <%= form.select :property_type, [['RESIDENTIAL PLOTS','RESIDENTIAL PLOTS'],['RESIDENTIAL BUILDINGS','RESIDENTIAL BUILDINGS'],['COMMERCIAL','COMMERCIAL']],{:prompt => '--  Select Property type --'}, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+       <label for="exampleInput1" class="bmd-label-floating"> City</label>
+       <%= form.select :city, [["Bairagarh", "Bairagarh"], ["Berasia Road", "Berasia Road"], ["Bittan Market", "Bittan Market"], ["Habib Gan", "Habib Gan"], ["Hamidia Road", "Hamidia Road"], ["Hari Ganga Nagar", "Hari Ganga Nagar"], ["Bangrasia", "Bangrasia"], ["Katara", "Katara"], ["Badwai", "Badwai"]],{:prompt => '--  Select Location --'}, class: "form-control", id: "exampleInput1" %>
+      </div>
+
+      <div>
+        <%= form.label :imgage %><br>
+        <%= form.file_field :post_image%>
+      </div><br>
+      
+     <%= form.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+</div>

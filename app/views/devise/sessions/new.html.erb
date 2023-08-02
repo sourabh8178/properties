@@ -1,5 +1,20 @@
 <h2>Log in</h2>
-
+<div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Login or Register</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-12 ms-auto me-auto">    
+        <ul class="login-register-tab-list nav">
+            <li><a class="active" href="#login-tab" data-bs-toggle="tab">Login</a></li>
+        </ul>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +34,14 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn" %>
   </div>
 <% end %>
-
 <%= render "devise/shared/links" %>
+
+</div>
+</div>
+</div>
+</div>
+
+

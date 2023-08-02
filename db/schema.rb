@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_112754) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_044635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_112754) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "message"
+    t.integer "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -62,6 +71,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_112754) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "property_type"
+    t.string "transaction_type"
+    t.string "city"
+    t.float "price"
+    t.text "details"
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -69,6 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_112754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_complete", default: false
+    t.string "mobile_number"
+    t.string "address"
   end
 
   create_table "properties", force: :cascade do |t|

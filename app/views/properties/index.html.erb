@@ -1,14 +1,60 @@
-<p style="color: green"><%= notice %></p>
+      <div class="row">
+        <div class="col-md-12">
+    <div class="card card-plain">
+      <div class="page-banner-section section" style="background-image: url(https://htmldemo.net/khonike/khonike/assets/images/bg/single-property-bg.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Property Listing</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- <div class="card-header card-header-primary"> -->
 
-<h1>Properties</h1>
-
-<div id="properties">
-  <% @properties.each do |property| %>
-    <%= render property %>
-    <p>
-      <%= link_to "Show this property", property %>
-    </p>
-  <% end %>
+        <!-- <h4 class="card-title mt-0">Propeties</h4> -->
+        <div class="text-right mt-0 ">
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="">
+              <th>Title</th>
+              <th>Amenities</th>
+              <th>Size</th>
+              <th>Price</th>
+              <th>Bedrooms</th>
+              <th>Parking</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th colspan="3">Action</th>
+            </thead>
+            <tbody>
+              <% @properties.each do |property| %>
+                <tr>
+                  <td><%= property.name %></td>
+                  <td><%= property.amenities %></td>
+                  <td><%= property.size %></td>
+                  <td><%= property.price %></td>
+                  <td><%= property.bedrooms %></td>
+                  <td><%= property.parking %></td>
+                  <td><%= property.description %></td>
+                  <td><%= property.location %></td>
+                  <td><%= link_to "show", property_path(property), class: "btn btn-primary" %></td>
+                  <td><%= link_to "Edit", edit_property_path(property), class: "btn btn-success" %></td>              
+                  <td><%= button_to 'Destroy', property_path(property), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                  </tr>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+         <%= link_to "new", new_property_path, class: "btn btn-success " %>
+      </div>
+    </div>
+      </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-plain">
 </div>
-
-<%= link_to "New property", new_property_path %>
