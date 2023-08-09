@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
 	def show
 		id = @profile.user_id
-		@user = User.find(id) 
+		@user = User.find(id)
 		@properties = @user.properties
 		@company = @user.company
 	end
@@ -37,6 +37,15 @@ class ProfilesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def change_password
+		if current_user.valid_password?(params[:current_password]) == true
+			if params[:new_password] == params[:confirm_new_password]
+			 current_user.update(password: params[:new_password])
+			end
+		end
+		redirect_to(request.referer)
   end
 
   

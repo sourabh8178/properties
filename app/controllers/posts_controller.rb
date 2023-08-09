@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :check_profile
   def index
   end
 

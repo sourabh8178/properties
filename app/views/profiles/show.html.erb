@@ -7,7 +7,7 @@
                   <li><a href="index.html">Home</a></li>
                   <li class="active">My Account</li>
               </ul>
-          </div>
+          </div>  
       </div>
   </div>
 </div>
@@ -31,7 +31,7 @@
               <div class="row">
                   <div class="col-12 mb-30"><h3 class="mb-0">Personal Profile</h3></div>
                     <div class="col-md-2"><label for="f_name"></label><%= image_tag @profile.profile_image %></div>
-                    <div class="col-md-6 col-12 mb-30"><label for="f_name">edit image</label><%= form.file_field :profile_image %></div>
+                    <div class="col-md-6 col-12 mb-30"><label for="f_name">edit image</label><%= form.file_field :profile_image %></div><br>
                   <div class="col-md-6 col-12 mb-30"><label for="f_name">First Name</label><%= form.text_field :name %></div>
                   <!-- <div class="col-md-6 col-12 mb-30"><label for="l_name">Last Name</label><input type="text" id="l_name" value="Palmer"></div> -->
                   <div class="col-12 mb-30"><label for="about_me">About Me</label><textarea id="about_me"></textarea></div>
@@ -138,94 +138,21 @@
               </div>
           </div>
           <div id="password-tab" class="tab-pane">
-            <form action="#">
+            <%= form_with(url: "/change_password") do |form| %>
+            <!-- <form action="/change_password"> -->
               <div class="row">
                 <div class="col-12 mb-30"><h3 class="mb-0">Change Password</h3></div>
-                <div class="col-12 mb-30"><label for="current_password">Current Password</label><input type="password" id="current_password" value="currentpassword"></div>
-                <div class="col-12 mb-30"><label for="new_password">New Password</label><input type="password" id="new_password"></div>
-                <div class="col-12 mb-30"><label for="confirm_new_password">Confirm New Password</label><input type="password" id="confirm_new_password"></div>
+                <div class="col-12 mb-30"><label for="current_password">Current Password</label><%= form.password_field :current_password %></div>
+                <div class="col-12 mb-30"><label for="new_password">New Password</label><%= form.password_field :new_password %></div>
+                <div class="col-12 mb-30"><label for="confirm_new_password">Confirm New Password</label><%= form.password_field :confirm_new_password %></div>
 
                 <div class="col-12 mb-30"><button class="btn">Save Change</button></div>
               </div>
-            </form>
+            <!-- </form> -->
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="page-banner-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="page-banner-title">PROFILE DETAILS</h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-md-8 col-12 ms-auto me-auto">    
-        <ul class="login-register-tab-list nav">
-            <li><a class="active" href="#login-tab" data-bs-toggle="tab">Profile</a></li>
-        </ul><div>
-          <p>
-            <strong>Image:</strong>
-            <%= image_tag @profile.profile_image %>
-          </p>
-
-          <p>
-            <strong>Name:</strong>
-            <%= @profile.name %>
-          </p>
-
-          <p>
-            <strong>email:</strong>
-            <%= @profile.email %>
-          </p>
-        </div>
-        <%= link_to "Edit this profile", edit_profile_path(@profile) , class: "btn"%>
-        </div>
-    </div>
-  </div>
-</div>
-<!-- <style type="text/css">
-  img, svg {
-    vertical-align: middle;
-    height: 117px;
-}
-</style> -->

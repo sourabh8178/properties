@@ -31,4 +31,10 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_profile_for_agent
+    if current_user&.present? && current_user.role != "agent"
+      redirect_to(request.referer)
+    end
+  end
 end

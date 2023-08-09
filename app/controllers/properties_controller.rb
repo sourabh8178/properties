@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
   before_action :check_profile
+  before_action :check_profile_for_agent, only: %i[ create new edit update destroy ]
   skip_before_action :verify_authenticity_token
 
 

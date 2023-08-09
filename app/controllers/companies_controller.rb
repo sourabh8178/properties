@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :check_profile
   def index
   end
 

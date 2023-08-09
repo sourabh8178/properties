@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'post/index'
   get 'post/new'
   get 'post/show'
+  post 'change_password', to: "profiles#change_password"
+  get 'programming', to: "profiles#programming"
   devise_for :users
   resources :users
   get "profiles", to: "profiles#index"
