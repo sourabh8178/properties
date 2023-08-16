@@ -59,6 +59,7 @@
                           </div>
                       <% end %>
                   </div>
+                  <a href="", class="btn">connect</a>
               </div>
           </div>
       </div>
@@ -89,16 +90,16 @@
                               <a href="<%= home_property_path(property)%>"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-1.jpg" alt=""></a>
                               <ul class="property-feature">
                                   <li>
-                                      <span class="area"><img src="assets/images/icons/area.png" alt=""><%= property.size %> SqFt</span>
+                                      <span class="area"><img src="<%= asset_path('web/area.png')%>" alt=""><%= property.size %> SqFt</span>
                                   </li>
                                   <li>
-                                      <span class="bed"><img src="assets/images/icons/bed.png" alt=""><%= property.bedrooms %></span>
+                                      <span class="bed"><img src="<%= asset_path('web/bed.png')%>" alt=""><%= property.bedrooms %></span>
                                   </li>
                                   <li>
-                                      <span class="bath"><img src="assets/images/icons/bath.png" alt=""><%= property.bathrooms %></span>
+                                      <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt=""><%= property.bathrooms %></span>
                                   </li>
                                   <li>
-                                      <span class="parking"><img src="assets/images/icons/parking.png" alt=""><%= property.parking %></span>
+                                      <span class="parking"><img src="<%= asset_path('web/parking.png')%>" alt=""><%= property.parking %></span>
                                   </li>
                               </ul>
                           </div>

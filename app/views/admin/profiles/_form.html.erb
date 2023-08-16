@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-plain">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title mt-0">Property</h4>
+      </div>
+      <div class="card-body">
+        <%= form_for([:admin, @profile]) do |form| %>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> Name</label>
+           <%= form.text_field :name, class: "form-control",id: "exampleInput1"%>
+
+          </div>
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> mobile number</label>
+           <%= form.text_field :mobile_number, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> Address</label>
+           <%= form.text_field :address, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Complete</label>
+           <%= form.check_box :is_complete, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating">Agent</label>   
+           <%= form.select :user_id, @users.map{ |u| [u.email, u.id ]}, {:prompt => '--  Select Agent --'}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+           <label for="exampleInput1" class="bmd-label-floating"> About</label>
+           <%= form.text_field :about, class: "form-control",id: "exampleInput1" %>
+          </div>
+
+          <div>
+            <%= form.label :imgage %><br>
+            <%= form.file_field :profile_image %>
+          </div>
+          
+         <%= form.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="error-message" style="color: red; display: none;">Please select an option.</div>
+
+<script type="text/javascript">
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+  var selectElement = document.getElementById("my_select");
+  if (!selectElement.value) {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById("error-message").style.display = "block"; // Show error message
+  } else {
+    document.getElementById("error-message").style.display = "none"; // Hide error message
+  }
+});
+</script>
+<style>
+	input[type="checkbox"] {
+    margin-left: -348px;
+    height: 21px;
+    margin-top: -28px;
+}
+</style>

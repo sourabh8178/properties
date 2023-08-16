@@ -23,6 +23,13 @@
           <p>Companies</p>
         </a>
       </li>
+
+      <li class="nav-item  <%= (params[:controller] == "admin/profiles") ? 'active' : "" %>">
+        <a class="nav-link" href="/admin/profiles">
+          <i class="material-icons">home</i>
+          <p>Profiles</p>
+        </a>
+      </li>
       
     </ul>
   </div>

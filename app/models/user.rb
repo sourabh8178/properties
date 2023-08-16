@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   # belongs_to :property, optional: true
-  has_many :properties
-  has_many :posts
+  has_many :properties, dependent: :destroy
+  has_many :posts, dependent: :destroy
   belongs_to :company, optional: true
   scope :agents, -> { where role: "agent" }
   scope :customers, -> { where role: "customer" }
